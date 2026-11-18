@@ -1,9 +1,9 @@
 import os 
-from langchain_community.document_loaders import TextLoader, DirectoryLoader
-from langchain_text_splitters import CharacterTextSplitter
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.document_loaders import  DirectoryLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_experimental.text_splitter import SemanticChunker
 from langchain_chroma import Chroma
-
+from emebedding_model import load_embedding_model
 
 def load_documents(docs_path="docs") : 
     if not os.path.exists(docs_path) : 
@@ -11,8 +11,7 @@ def load_documents(docs_path="docs") :
 
     loader = DirectoryLoader(
         path=docs_path,
-        glob="*.txt",
-        loader_cls=TextLoader
+        glob="*.pdf",
     )
 
     documents = loader.load()
@@ -27,11 +26,13 @@ def load_documents(docs_path="docs") :
     
     return documents
 
-def split_documents(documents,chunk_size=1000,chunk_overlap=0) :
-    text_splitter = CharacterTextSplitter(
-        chunk_size=chunk_size,
-        chunk_overlap=chunk_overlap,
-    )
+def split_documents(documents,chunk_size=950,chunk_overlap=50) :
+    embeddings = load_embedding_model()
+    text_splitter = SemanticChunker(
+    embeddings,
+    breakpoint_threshold_type="percentile",
+    breakpoint_threshold_amount=95
+)
 
     chunks = text_splitter.split_documents(documents=documents)
     if chunks :
@@ -44,9 +45,7 @@ def split_documents(documents,chunk_size=1000,chunk_overlap=0) :
     return chunks
 
 def create_vector_store(chunks,persist_directory="db/chroma_db") :
-    embedding_model = HuggingFaceEmbeddings(
-        model_name="paraphrase-multilingual-MiniLM-L12-v2"
-    )
+    embedding_model = load_embedding_model()
 
     vector_store = Chroma.from_documents(
         documents=chunks,

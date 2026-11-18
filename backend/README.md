@@ -88,6 +88,24 @@ from Git.
 The first embedding run may download the Sentence Transformers model. The
 generated Chroma data is stored under `db/chroma_db` and is not committed.
 
+## Run the API server
+
+Start the FastAPI application with Uvicorn:
+
+```powershell
+uvicorn main:app --reload
+```
+
+The health endpoint is available at `http://127.0.0.1:8000/health`. Ask a
+question by sending JSON to `http://127.0.0.1:8000/ask`:
+
+```powershell
+Invoke-RestMethod -Method Post `
+  -Uri http://127.0.0.1:8000/ask `
+  -ContentType "application/json" `
+  -Body '{"query":"Quelles sont les démarches administratives ?"}'
+```
+
 ## What this tutorial teaches
 
 - Why RAG is useful when all documents cannot fit directly into an LLM prompt.
