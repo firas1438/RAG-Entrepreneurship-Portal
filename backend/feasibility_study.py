@@ -113,7 +113,7 @@ IMPORTANT RULES:
   are available.
 - Explain all assumptions used in calculations.
 
-OUTPUT LANGUAGE: French.
+OUTPUT LANGUAGE: English. Maintain official Tunisian administrative and monetary terms (e.g. TND).
 
 OUTPUT FORMAT:
 - Executive summary

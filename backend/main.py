@@ -16,159 +16,159 @@ class QuestionRequest(BaseModel):
 class BusinessCreationRequest(BaseModel):
     activityType: str = Field(
         ...,
-        description="Domaine général de l'activité (numérique, commerce, industrie, etc.)"
+        description="General business domain (digital, commerce, industry, craft, agriculture, etc.)"
     )
 
     activityDescription: str = Field(
         ...,
-        description="Description courte de l'activité de l'entreprise"
+        description="Short description of the business activity"
     )
 
     location: str = Field(
         ...,
-        description="Gouvernorat ou région où l'entreprise sera immatriculée"
+        description="Tunisian governorate or region where the business will be registered"
     )
 
     founderCount: str = Field(
         ...,
-        description="Nombre de fondateurs ou associés"
+        description="Number of founders or partners"
     )
 
     role: str = Field(
         ...,
-        description="Rôle de l'utilisateur dans l'entreprise"
+        description="Role of the user in the company (founder, partner, investor, etc.)"
     )
 
     existingBusiness: str = Field(
         ...,
-        description="Indique si l'utilisateur possède déjà une activité"
+        description="Indicates whether the user already owns an existing business"
     )
 
     budget: str = Field(
         ...,
-        description="Budget ou capital prévu en TND"
+        description="Initial budget or planned capital in TND"
     )
 
     patrimonialProtection: str = Field(
         ...,
-        description="Importance de la protection du patrimoine personnel"
+        description="Priority given to personal asset protection"
     )
 
     requiresAuthorization: str = Field(
         ...,
-        description="Indique si l'activité nécessite une autorisation spéciale"
+        description="Indicates whether the activity requires special permits or authorization"
     )
 
     additionalInfo: Optional[str] = Field(
         None,
-        description="Informations ou remarques complémentaires"
+        description="Additional details or comments"
     )
 
 class MarketAnalysisRequest(BaseModel):
     productDescription: str = Field(
         ...,
-        description="Description du produit ou service proposé"
+        description="Description of the proposed product or service"
     )
 
     sector: str = Field(
         ...,
-        description="Secteur d'activité de l'entreprise"
+        description="Industry sector of the business"
     )
 
     marketScope: str = Field(
         ...,
-        description="Portée géographique du marché cible"
+        description="Geographical scope of the target market"
     )
 
     customerType: str = Field(
         ...,
-        description="Type de clientèle visée (B2C, B2B, B2G, étudiants, etc.)"
+        description="Target customer segment (B2C, B2B, B2G, students, etc.)"
     )
 
     ageRange: str = Field(
         ...,
-        description="Tranche d'âge principale ciblée"
+        description="Primary target age range"
     )
 
     knownCompetitors: str = Field(
         ...,
-        description="Indique si des concurrents sont déjà identifiés"
+        description="Indicates whether competitors are already identified"
     )
 
     competitorNames: Optional[str] = Field(
         None,
-        description="Noms ou références des concurrents connus"
+        description="Names or references of known competitors"
     )
 
     differentiation: str = Field(
         ...,
-        description="Avantage concurrentiel principal (prix, qualité, innovation, service, etc.)"
+        description="Primary competitive advantage (price, quality, innovation, service, proximity)"
     )
 
     mainObjective: str = Field(
         ...,
-        description="Objectif principal de l'étude de marché"
+        description="Primary objective of the market analysis"
     )
 
 class FeasibilityStudyRequest(BaseModel):
     businessIdea: str = Field(
         ...,
-        description="Description générale du projet entrepreneurial"
+        description="General overview of the entrepreneurial project"
     )
 
     productsServices: str = Field(
         ...,
-        description="Produits ou services qui seront proposés"
+        description="Products or services to be offered"
     )
 
     activityLocation: str = Field(
         ...,
-        description="Lieu principal d'exercice de l'activité"
+        description="Primary operational location of the activity"
     )
 
     startupNeeds: List[str] = Field(
         ...,
-        description="Liste des ressources nécessaires au démarrage"
+        description="List of initial resources required for launch"
     )
 
     teamSize: str = Field(
         ...,
-        description="Taille de l'équipe au lancement du projet"
+        description="Team size at project launch"
     )
 
     initialBudget: str = Field(
         ...,
-        description="Budget initial estimé pour démarrer l'activité"
+        description="Estimated starting budget to launch the business in TND"
     )
 
     fundingSource: str = Field(
         ...,
-        description="Source de financement du projet"
+        description="Financing source for the project"
     )
 
     salesChannel: str = Field(
         ...,
-        description="Canal principal de vente ou de distribution"
+        description="Primary sales or distribution channel"
     )
 
     hasSalesEstimate: str = Field(
         ...,
-        description="Indique si une estimation du chiffre d'affaires mensuel existe (oui/non)"
+        description="Indicates whether a monthly revenue estimate exists (yes/no)"
     )
 
     monthlySalesEstimate: Optional[str] = Field(
         None,
-        description="Estimation du chiffre d'affaires mensuel en TND"
+        description="Estimated monthly sales revenue in TND"
     )
 
     anticipatedChallenges: Optional[str] = Field(
         None,
-        description="Principaux défis ou risques anticipés"
+        description="Main challenges or anticipated risks"
     )
 
     additionalInfo: Optional[str] = Field(
         None,
-        description="Informations supplémentaires concernant la faisabilité du projet"
+        description="Additional remarks regarding project feasibility"
     )
 
 @app.get("/health")

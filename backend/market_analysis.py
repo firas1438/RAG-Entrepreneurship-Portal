@@ -127,7 +127,7 @@ EVIDENCE REQUIREMENTS:
 - Include source titles and publication dates when available.
 - Identify missing information and research limitations.
 
-OUTPUT LANGUAGE: French.
+OUTPUT LANGUAGE: English. Maintain official Tunisian sector and administrative terminology where applicable.
 
 OUTPUT FORMAT:
 Return structured sections for SWOT, PESTEL,

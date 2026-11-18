@@ -7,35 +7,35 @@ def build_creation_queries(data):
 
     queries = [
         f"""
-        Conditions et démarches administratives pour créer
-        une entreprise dans le secteur {data.activityType}.
-        Activité : {data.activityDescription}.
+        Administrative requirements and procedures to establish
+        a business in the {data.activityType} sector.
+        Activity: {data.activityDescription}.
         """,
 
         f"""
-        Comparaison des formes juridiques tunisiennes selon
-        le nombre de fondateurs : {data.founderCount}.
-        Protection du patrimoine personnel :
+        Comparison of Tunisian legal structures (formes juridiques) according
+        to number of founders: {data.founderCount}.
+        Personal asset protection priority:
         {data.patrimonialProtection}.
-        Rôle du fondateur : {data.role}.
+        Founder role: {data.role}.
         """,
 
         f"""
-        Conditions de capital social et frais de constitution
-        d'une entreprise en Tunisie.
-        Budget initial : {data.budget}.
+        Share capital requirements (capital social) and incorporation costs
+        to register a company in Tunisia.
+        Initial budget: {data.budget} TND.
         """,
 
         f"""
-        Organismes compétents et formalités de création
-        d'entreprise à {data.location}, Tunisie.
+        Competent authorities and business registration formalities
+        in {data.location}, Tunisia.
         """,
 
         f"""
-        Autorisations et licences administratives nécessaires
-        pour l'activité suivante :
+        Administrative authorizations, licenses, and permits required
+        for the following activity:
         {data.activityDescription}.
-        Réponse du client concernant les autorisations :
+        Client response regarding authorizations:
         {data.requiresAuthorization}.
         """
     ]
@@ -104,7 +104,7 @@ Return a structured response containing:
 - Official sources
 - Missing information and warnings
 
-Respond in clear and professional French.
+Respond in clear and professional English. Preserve official Tunisian legal and administrative terms (e.g. RNE, APII, INS, JORT, CNSS, TND, SUARL, SARL, SA, Entreprise Individuelle).
 
 """ 
 
