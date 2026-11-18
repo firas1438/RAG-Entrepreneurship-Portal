@@ -5,34 +5,34 @@ const forms = [
     name: "Entreprise individuelle",
     abbr: "EI",
     detail:
-      "Une personne physique. Formalités réduites, responsabilité illimitée.",
-    capital: "Aucun minimum",
-    associes: "1 personne",
-    responsabilite: "Illimitée",
+      "Sole proprietorship. Minimal formalities, unlimited personal liability.",
+    capital: "No minimum",
+    associes: "1 person",
+    responsabilite: "Unlimited",
   },
   {
     name: "Société Unipersonnelle à Responsabilité Limitée",
     abbr: "SUARL",
-    detail: "Associé unique. Patrimoine de la société distinct, statuts écrits.",
-    capital: "Aucun minimum",
-    associes: "1 associé",
-    responsabilite: "Limitée aux apports",
+    detail: "Single-member company. Separate business assets, written articles of association required.",
+    capital: "No minimum",
+    associes: "1 shareholder",
+    responsabilite: "Limited to contributions",
   },
   {
     name: "Société à Responsabilité Limitée",
     abbr: "SARL",
-    detail: "Deux associés au moins. Forme courante pour les PME.",
-    capital: "Aucun minimum",
-    associes: "2 à 50 associés",
-    responsabilite: "Limitée aux apports",
+    detail: "At least two shareholders. The standard form for small and medium enterprises.",
+    capital: "No minimum",
+    associes: "2 to 50 shareholders",
+    responsabilite: "Limited to contributions",
   },
   {
     name: "Société Anonyme",
     abbr: "SA",
-    detail: "Projets de taille importante. Capital et organes définis par la loi.",
-    capital: "5 000 DT min.",
-    associes: "7 actionnaires min.",
-    responsabilite: "Limitée aux apports",
+    detail: "For large-scale projects. Capital and governing bodies defined by law.",
+    capital: "5,000 TND min.",
+    associes: "7 shareholders min.",
+    responsabilite: "Limited to contributions",
   },
 ];
 
@@ -40,14 +40,15 @@ export function LegalFramework() {
   return (
     <HomeSection id="cadre" labelledBy="cadre-title">
       <p className="text-sm font-semibold tracking-wide text-primary uppercase">
-        Droit des sociétés
+        Company Law
       </p>
       <h2 id="cadre-title" className="mt-2 text-4xl font-semibold sm:text-5xl">
-        Cadre juridique
+        Legal Framework
       </h2>
       <p className="mt-3 max-w-3xl text-lg text-zinc-600">
-        Formes les plus utilisées pour exercer une activité en Tunisie. Le choix
-        dépend du nombre d&apos;associés et du niveau de risque.
+        The most common legal forms for conducting business in Tunisia. The
+        right choice depends on the number of shareholders and the level of
+        risk.
       </p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
@@ -84,7 +85,7 @@ export function LegalFramework() {
                 </div>
                 <div>
                   <dt className="text-xs font-medium text-zinc-400 uppercase">
-                    Associés
+                    Shareholders
                   </dt>
                   <dd className="mt-0.5 font-semibold text-zinc-800">
                     {form.associes}
@@ -92,7 +93,7 @@ export function LegalFramework() {
                 </div>
                 <div>
                   <dt className="text-xs font-medium text-zinc-400 uppercase">
-                    Responsabilité
+                    Liability
                   </dt>
                   <dd className="mt-0.5 font-semibold text-zinc-800">
                     {form.responsabilite}

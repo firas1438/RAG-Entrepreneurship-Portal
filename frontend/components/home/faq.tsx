@@ -11,39 +11,39 @@ import {
 const faqs = [
   {
     id: "item-1",
-    question: "Quel est le rôle de la plateforme Foundry ?",
+    question: "What is the role of the Foundry platform?",
     answer:
-      "Foundry est un portail d'orientation qui centralise les démarches administratives de création, l'analyse de marché et l'évaluation de projets en Tunisie.",
+      "Foundry is an information portal that centralizes administrative procedures for business creation, market analysis, and project evaluation in Tunisia.",
   },
   {
     id: "item-2",
-    question: "L'utilisation de la plateforme est-elle gratuite ?",
+    question: "Is the platform free to use?",
     answer:
-      "Oui, la consultation des guides de formalités, des indicateurs sectoriels et des outils d'évaluation sur le portail est totalement gratuite.",
+      "Yes, browsing the procedural guides, sector indicators, and evaluation tools on the portal is completely free of charge.",
   },
   {
     id: "item-3",
-    question: "D'où proviennent les données et informations du portail ?",
+    question: "Where does the portal's data and information come from?",
     answer:
-      "Toutes les informations s'appuient sur des sources officielles publiques tunisiennes : RNE, APII, INS, Ministère des Finances et textes du JORT.",
+      "All information is based on official Tunisian public sources: RNE, APII, INS, the Ministry of Finance, and JORT legal texts.",
   },
   {
     id: "item-4",
-    question: "Foundry remplace-t-il les administrations officielles ?",
+    question: "Does Foundry replace official government agencies?",
     answer:
-      "Non, le portail est un outil d'information et d'aide à la décision. Il ne se substitue pas aux guichets administratifs et n'instruit aucun dossier.",
+      "No, the portal is an information and decision-support tool. It does not substitute for administrative offices and does not process any applications.",
   },
   {
     id: "item-5",
-    question: "Comment démarrer l'évaluation de mon projet sur le portail ?",
+    question: "How do I start evaluating my project on the portal?",
     answer:
-      "Cliquez sur le bouton « Commencer » dans le menu pour accéder aux trois services principaux : Création d'entreprise, Analyse de marché ou Faisabilité.",
+      "Click the \"Get started\" button in the menu to access the three main services: Business Creation, Market Analysis, or Feasibility Study.",
   },
   {
     id: "item-6",
-    question: "Les rapports et analyses générés ont-ils une valeur juridique ?",
+    question: "Do the generated reports and analyses carry legal weight?",
     answer:
-      "Les synthèses et études sont fournies à titre indicatif pour préparer votre dossier ; seuls les textes officiels et décisions des administrations font foi.",
+      "The summaries and studies are provided for informational purposes only to help you prepare your application; only official legal texts and government decisions are legally binding.",
   },
 ];
 
@@ -51,14 +51,14 @@ export function Faq() {
   return (
     <HomeSection id="faq" labelledBy="faq-title" className="border-b-0">
       <p className="text-sm font-semibold tracking-wide text-primary uppercase">
-        Questions fréquentes
+        Frequently Asked Questions
       </p>
       <h2 id="faq-title" className="mt-2 text-4xl font-semibold sm:text-5xl">
-        Réponses à vos questions
+        Answers to Your Questions
       </h2>
       <p className="mt-3 max-w-3xl text-lg text-zinc-600">
-        Tout ce que vous devez savoir sur le fonctionnement, les données et
-        l&apos;utilisation du portail.
+        Everything you need to know about how the portal works, its data, and
+        how to use it.
       </p>
 
       <div className="mt-10 border border-zinc-300 bg-white">

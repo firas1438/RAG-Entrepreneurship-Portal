@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export function Hero() {
   return (
-    <section className="relative isolate -mx-8 min-h-156 overflow-hidden sm:-mx-6">
+    <section className="relative isolate -mx-8 min-h-160 overflow-hidden sm:-mx-6">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/hero.gif"
@@ -18,19 +18,19 @@ export function Hero() {
           {site.republic} · {site.agency}
         </p>
         <p className="mt-6 max-w-4xl text-3xl leading-tight text-white sm:text-5xl">
-          Portail d&apos;information pour créer une entreprise et évaluer un
-          projet en Tunisie.
+          Information portal to start a business and evaluate your project
+          in Tunisia.
         </p>
         <div className="mt-10 flex flex-wrap gap-4">
           <Button asChild className="h-12 rounded-sm px-8 text-md sm:h-14 sm:text-lg">
-            <Link href="/services">Consulter les services</Link>
+            <Link href="/services">Browse services</Link>
           </Button>
           <Button
             asChild
             variant="outline"
             className="h-12 rounded-sm border-white bg-transparent px-8 text-md text-white hover:bg-white/10 hover:text-white sm:h-14 sm:text-lg"
           >
-            <Link href="#ressources">Ressources officielles</Link>
+            <Link href="#resources">Official resources</Link>
           </Button>
         </div>
       </div>

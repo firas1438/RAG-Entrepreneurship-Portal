@@ -4,45 +4,45 @@ import { HomeSection } from "@/components/home/section";
 
 const resources = [
   {
-    name: "Registre national des entreprises",
+    name: "National Register of Enterprises (RNE)",
     abbr: "RNE",
-    domain: "Immatriculation",
-    description: "Immatriculation, modification et radiation des entreprises tunisiennes.",
+    domain: "Registration",
+    description: "Registration, modification, and deregistration of Tunisian companies.",
     url: "https://www.registre-entreprises.tn",
   },
   {
-    name: "Agence de promotion de l'industrie et de l'innovation",
+    name: "Agency for the Promotion of Industry and Innovation (APII)",
     abbr: "APII",
-    domain: "Investissement",
-    description: "Guichet unique pour la création d'entreprise et l'accompagnement des investisseurs.",
+    domain: "Investment",
+    description: "One-stop shop for business creation and investor support.",
     url: "https://www.apii.tn",
   },
   {
-    name: "Institut national de la statistique",
+    name: "National Institute of Statistics (INS)",
     abbr: "INS",
-    domain: "Statistiques",
-    description: "Données démographiques, économiques et sectorielles officielles.",
+    domain: "Statistics",
+    description: "Official demographic, economic, and sector-level data.",
     url: "https://www.ins.tn",
   },
   {
-    name: "Caisse nationale de sécurité sociale",
+    name: "National Social Security Fund (CNSS)",
     abbr: "CNSS",
-    domain: "Protection sociale",
-    description: "Affiliation, déclarations et cotisations sociales des employeurs.",
+    domain: "Social coverage",
+    description: "Employer registration, declarations, and social contributions.",
     url: "https://www.cnss.tn",
   },
   {
-    name: "Ministère des Finances",
+    name: "Ministry of Finance (MF)",
     abbr: "MF",
-    domain: "Fiscalité",
-    description: "Régimes fiscaux, déclarations et textes de loi en vigueur.",
+    domain: "Taxation",
+    description: "Tax regimes, declarations, and applicable legislation.",
     url: "https://www.finances.gov.tn",
   },
   {
-    name: "Portail de l'industrie tunisienne",
+    name: "Tunisian Industry Portal (TI)",
     abbr: "TI",
-    domain: "Industrie",
-    description: "Nomenclatures sectorielles, barèmes et réglementations industrielles.",
+    domain: "Industry",
+    description: "Sector classifications, fee schedules, and industrial regulations.",
     url: "https://www.tunisieindustrie.nat.tn",
   },
 ];
@@ -50,7 +50,7 @@ const resources = [
 export function Resources() {
   return (
     <HomeSection
-      id="ressources"
+      id="resources"
       labelledBy="resources-title"
       className="bg-zinc-50"
     >
@@ -63,16 +63,16 @@ export function Resources() {
             id="resources-title"
             className="mt-2 text-4xl font-semibold sm:text-5xl"
           >
-            Ressources officielles
+            Official Resources
           </h2>
           <p className="mt-3 max-w-2xl text-lg text-zinc-600">
-            Organismes à consulter pour les procédures, la fiscalité, le social
-            et les statistiques.
+            Organizations to consult for procedures, taxation, social coverage,
+            and statistics.
           </p>
         </div>
         <div className="flex shrink-0 items-center gap-2 border border-zinc-200 bg-white px-4 py-3 text-xs text-zinc-500 sm:max-w-xs">
           <ShieldCheck className="size-4 shrink-0 text-primary" />
-          <span>Les textes officiels publiés au JORT prévalent en cas de divergence.</span>
+          <span>Official JORT texts prevail in case of discrepancy.</span>
         </div>
       </div>
 

@@ -2,18 +2,18 @@ import { HomeSection } from "@/components/home/section";
 
 const services = [
   {
-    title: "Création d'entreprise",
-    text: "Identification des formes juridiques adaptées, préparation complète des pièces constitutives, immatriculation officielle au Registre National des Entreprises (RNE) et orientation ciblée vers les administrations et guichets uniques compétents.",
+    title: "Business Creation",
+    text: "Identification of suitable legal forms, full preparation of incorporation documents, official registration with the Registre National des Entreprises (RNE), and targeted guidance toward the relevant authorities and one-stop shops.",
     image: "/services/11.png",
   },
   {
-    title: "Analyse de marché",
-    text: "Cartographie concurrentielle, analyse des indicateurs macroéconomiques et sectoriels récents, identification des opportunités régionales et évaluation de la demande par gouvernorat pour valider le positionnement de votre activité.",
+    title: "Market Analysis",
+    text: "Competitive mapping, analysis of recent macroeconomic and sector-specific indicators, identification of regional opportunities, and demand assessment by governorate to validate your business positioning.",
     image: "/services/22.png",
   },
   {
-    title: "Étude de faisabilité",
-    text: "Évaluation multicritère couvrant les volets commercial, technique, réglementaire et financier. Restitution sous forme de rapport indicatif structuré pour anticiper les besoins en investissement et sécuriser votre prise de décision.",
+    title: "Feasibility Study",
+    text: "Multi-criteria evaluation covering commercial, technical, regulatory, and financial dimensions. Delivered as a structured indicative report to anticipate investment needs and support informed decision-making.",
     image: "/services/33.png",
   },
 ];
@@ -22,10 +22,10 @@ export function Services() {
   return (
     <HomeSection id="services" labelledBy="services-title">
       <p className="text-sm font-semibold tracking-wide text-primary uppercase">
-        Missions & Démarches
+        Services &amp; Procedures
       </p>
       <h2 id="services-title" className="mt-2 text-4xl font-semibold sm:text-4xl">
-        Services aux créateurs et aux entreprises
+        Services for Founders and Businesses
       </h2>
       <div className="mt-10">
         {services.map((service, index) => (

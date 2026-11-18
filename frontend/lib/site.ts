@@ -2,16 +2,16 @@ export const site = {
   name: "Foundry",
   fullName: "Foundry",
   tagline:
-    "Portail d'information pour la création d'entreprise et l'évaluation de projets en Tunisie.",
-  republic: "République tunisienne",
+    "Information portal for business creation and project evaluation in Tunisia.",
+  republic: "Republic of Tunisia",
   republicAr: "الجمهورية التونسية",
-  agency: "Portail des services aux entrepreneurs",
+  agency: "Portal for Entrepreneurial Services",
 };
 
 export const navItems = [
-  { href: "/", label: "Accueil" },
+  { href: "/", label: "Home" },
   { href: "/#services", label: "Services" },
-  { href: "/#fonctionnement", label: "Fonctionnement" },
-  { href: "/#ressources", label: "Ressources" },
-  { href: "/#faq", label: "Questions fréquentes" },
+  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#resources", label: "Resources" },
+  { href: "/#faq", label: "FAQ" },
 ] as const;
