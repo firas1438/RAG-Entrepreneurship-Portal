@@ -3,48 +3,48 @@ import { HomeSection } from "@/components/home/section";
 const processSteps = [
   {
     number: "01",
-    title: "Décrire",
+    title: "Describe",
     description:
-      "Indiquez l'activité, le lieu d'implantation et la question à traiter.",
+      "Indicate the activity, the location, and the question you want to address.",
   },
   {
     number: "02",
-    title: "Consulter",
+    title: "Review",
     description:
-      "Le portail restitue démarches, pièces constitutives et données de marché.",
+      "The portal returns the relevant procedures, incorporation documents, and market data.",
   },
   {
     number: "03",
-    title: "Vérifier",
+    title: "Verify",
     description:
-      "Confirmez les textes juridiques, autorisations et barèmes sur les sites officiels.",
+      "Confirm legal texts, authorizations, and fee schedules on official government websites.",
   },
 ];
 
 export function HowItWorks() {
   return (
     <HomeSection
-      id="fonctionnement"
+      id="how-it-works"
       labelledBy="steps-title"
       className="bg-zinc-50"
     >
       <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
         <div className="max-w-md">
           <p className="text-sm font-semibold tracking-wide text-primary uppercase">
-            Mode d&apos;emploi
+            How It Works
           </p>
           <h2
             id="steps-title"
             className="mt-2 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl"
           >
-            Fonctionnement
+            How It Works
           </h2>
 
           <p className="mt-4 mb-8 text-lg leading-relaxed text-zinc-600">
-            Un parcours structuré en trois étapes pour passer de votre idée de
-            projet à sa concrétisation administrative et réglementaire en
-            Tunisie. Chaque étape vous guide vers les bons organismes, les
-            pièces requises et les textes officiels en vigueur.
+            A structured three-step journey to take your business idea from
+            concept to its administrative and regulatory completion in Tunisia.
+            Each step guides you toward the right agencies, required documents,
+            and applicable official texts.
           </p>
         </div>
 

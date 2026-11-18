@@ -48,7 +48,7 @@ export function SiteHeader() {
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">
-          <nav className="flex items-center gap-6" aria-label="Navigation principale">
+          <nav className="flex items-center gap-6" aria-label="Main navigation">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -61,7 +61,7 @@ export function SiteHeader() {
           </nav>
 
           <Button asChild className="rounded-xs bg-primary px-6 py-5 text-sm font-semibold text-white shadow-xs hover:bg-primary/90">
-            <Link href="/services">Commencer</Link>
+            <Link href="/services">Get Started</Link>
           </Button>
         </div>
 
@@ -72,7 +72,7 @@ export function SiteHeader() {
               variant="outline"
               size="sm"
               className="rounded-sm md:hidden"
-              aria-label="Ouvrir le menu"
+              aria-label="Open menu"
             >
               <Menu />
               Menu
@@ -82,7 +82,7 @@ export function SiteHeader() {
             <SheetHeader>
               <SheetTitle>Navigation</SheetTitle>
             </SheetHeader>
-            <nav className="flex flex-col gap-1 px-4" aria-label="Menu mobile">
+            <nav className="flex flex-col gap-1 px-4" aria-label="Mobile menu">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -97,7 +97,7 @@ export function SiteHeader() {
             <div className="mt-2 px-4">
               <Button asChild className="w-full rounded-xs bg-primary py-5 text-sm font-semibold text-white hover:bg-primary/90">
                 <Link href="/services" onClick={() => setOpen(false)}>
-                  Commencer
+                  Get Started
                 </Link>
               </Button>
             </div>
