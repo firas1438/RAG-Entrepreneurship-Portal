@@ -1,14 +1,8 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Building2, TrendingUp, Calculator, ChevronRight } from "lucide-react";
+import { ArrowRight, Building2, TrendingUp, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const metadata: Metadata = {
-    title: "Services & Procedures",
-    description:
-        "Access the main orientation, market analysis, and project feasibility services in Tunisia.",
-};
 
 const features = [
     {
@@ -28,24 +22,12 @@ const features = [
         number: "02",
         title: "Market Analysis",
         description:
-            "Analyze your target market, evaluate direct competitors, identify regional industry trends, and assess local consumer demand across governorates.",
-        highlights: ["Competitive analysis", "Data by governorate", "Sector trends"],
+            "Analyze your target market, evaluate direct competitors, identify regional industry trends, and assess commercial and financial feasibility for your project.",
+        highlights: ["Competitive analysis", "Data by governorate", "Financial & commercial viability"],
         image: "/services/22.png",
         icon: TrendingUp,
         href: "/services/analysis",
         action: "Launch analysis",
-    },
-    {
-        id: "feasability",
-        number: "03",
-        title: "Feasibility Study",
-        description:
-            "Assess the overall viability of your business idea through structured analysis covering commercial, technical, regulatory, and financial dimensions.",
-        highlights: ["Break-even point", "Investment needs", "Summary report"],
-        image: "/services/33.png",
-        icon: Calculator,
-        href: "/services/feasability",
-        action: "Assess feasibility",
     },
 ];
 
@@ -65,12 +47,12 @@ export default function ServicesPage() {
                     Select a service
                 </h1>
                 <p className="mt-3 max-w-3xl text-lg text-zinc-600">
-                    Use our interactive tools to structure your business creation, analyze your
-                    target market, or evaluate the financial viability of your project.
+                    Use our interactive tools to structure your business creation or conduct a comprehensive
+                    market analysis and commercial viability evaluation for your project in Tunisia.
                 </p>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 sm:gap-8">
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 sm:gap-8">
                 {features.map((feature) => {
                     return (
                         <article

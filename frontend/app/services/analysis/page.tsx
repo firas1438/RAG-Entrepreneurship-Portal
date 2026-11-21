@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChevronRight, ShieldCheck, Clock, RotateCcw } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ChevronRight, ShieldCheck } from "lucide-react";
 import { MultiStepForm } from "@/components/multi-step-form";
 import { analysisSteps } from "@/components/multi-step-form/steps";
+import { MarketAnalysisResult } from "@/components/multi-step-form/results";
+import { getMockMarketAnalysisResult } from "@/lib/mock-data/analysis-mock";
 
 export default function AnalysisServicePage() {
   const router = useRouter();
@@ -39,45 +40,10 @@ export default function AnalysisServicePage() {
 
       <div className="mt-6">
         {submittedValues ? (
-          <div className="border border-zinc-200 bg-white p-6 sm:p-10">
-            <div className="flex flex-col items-center gap-4 py-8 text-center">
-              <div className="flex size-14 items-center justify-center border border-zinc-200 bg-zinc-50">
-                <Clock className="size-6 text-zinc-400" />
-              </div>
-              <div>
-                <h1 className="text-xl font-bold tracking-tight text-zinc-950 sm:text-2xl">
-                  Analysis being prepared
-                </h1>
-                <p className="mt-2 max-w-md text-sm text-zinc-500">
-                  Your answers have been submitted. The personalized market analysis
-                  will appear here once processing is complete.
-                </p>
-              </div>
-
-              <div className="mt-4 w-full max-w-sm border border-dashed border-zinc-300 bg-zinc-50 px-6 py-4 text-left text-xs text-zinc-500">
-                <p className="mb-2 font-semibold uppercase tracking-wide text-zinc-400">
-                  Collected answers
-                </p>
-                <ul className="space-y-1">
-                  {Object.entries(submittedValues).map(([key, value]) => (
-                    <li key={key} className="flex gap-2">
-                      <span className="font-medium text-zinc-700">{key}:</span>
-                      <span>{String(value) || "—"}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <Button
-                onClick={handleReset}
-                variant="outline"
-                className="mt-2 rounded-xs border-zinc-300 px-5 text-sm font-medium hover:bg-zinc-100"
-              >
-                <RotateCcw className="mr-2 size-4" />
-                New analysis
-              </Button>
-            </div>
-          </div>
+          <MarketAnalysisResult
+            data={getMockMarketAnalysisResult(submittedValues)}
+            onReset={handleReset}
+          />
         ) : (
           <MultiStepForm
             serviceTitle="Market Analysis"

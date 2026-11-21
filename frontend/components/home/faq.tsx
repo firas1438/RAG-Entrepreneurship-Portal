@@ -37,7 +37,7 @@ const faqs = [
     id: "item-5",
     question: "How do I start evaluating my project on the portal?",
     answer:
-      "Click the \"Get started\" button in the menu to access the three main services: Business Creation, Market Analysis, or Feasibility Study.",
+      "Click the \"Get started\" button in the menu to access the two main services: Business Creation or Market Analysis.",
   },
   {
     id: "item-6",
