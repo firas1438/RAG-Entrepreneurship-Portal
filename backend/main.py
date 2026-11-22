@@ -1,13 +1,19 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-from typing import Optional,List
-
+from typing import Optional, List
 
 from business_creation import predict_business_creation
 from market_analysis import predict_market_analysis
-from feasibility_study import predict_feasability_creation
 
 app = FastAPI(title="RAG API", version="1.0.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type"],
+)
 
 
 class QuestionRequest(BaseModel):
@@ -105,70 +111,34 @@ class MarketAnalysisRequest(BaseModel):
         description="Primary competitive advantage (price, quality, innovation, service, proximity)"
     )
 
-    mainObjective: str = Field(
+    salesChannel: str = Field(
         ...,
-        description="Primary objective of the market analysis"
-    )
-
-class FeasibilityStudyRequest(BaseModel):
-    businessIdea: str = Field(
-        ...,
-        description="General overview of the entrepreneurial project"
-    )
-
-    productsServices: str = Field(
-        ...,
-        description="Products or services to be offered"
-    )
-
-    activityLocation: str = Field(
-        ...,
-        description="Primary operational location of the activity"
-    )
-
-    startupNeeds: List[str] = Field(
-        ...,
-        description="List of initial resources required for launch"
-    )
-
-    teamSize: str = Field(
-        ...,
-        description="Team size at project launch"
+        description="Primary distribution channel (e-commerce, physical store, social media, etc.)"
     )
 
     initialBudget: str = Field(
         ...,
-        description="Estimated starting budget to launch the business in TND"
+        description="Estimated startup budget in TND"
     )
 
-    fundingSource: str = Field(
-        ...,
-        description="Financing source for the project"
-    )
-
-    salesChannel: str = Field(
-        ...,
-        description="Primary sales or distribution channel"
+    startupNeeds: Optional[List[str]] = Field(
+        None,
+        description="Initial resources or equipment needed for launch"
     )
 
     hasSalesEstimate: str = Field(
         ...,
-        description="Indicates whether a monthly revenue estimate exists (yes/no)"
+        description="Indicates whether the user has a sales estimate"
     )
 
     monthlySalesEstimate: Optional[str] = Field(
         None,
-        description="Estimated monthly sales revenue in TND"
+        description="Estimated monthly sales in TND if available"
     )
 
-    anticipatedChallenges: Optional[str] = Field(
-        None,
-        description="Main challenges or anticipated risks"
-    )
-
-    additionalInfo: Optional[str] = Field(
-        None,
-        description="Additional remarks regarding project feasibility"
+    mainObjective: str = Field(
+        ...,
+        description="Primary objective of the market analysis"
     )
 
 @app.get("/health")
@@ -177,17 +147,10 @@ def health_check():
 
 @app.post("/business-creation")
 async def business_creation(request: BusinessCreationRequest):
-    
-    result =  predict_business_creation(request)
+    result = predict_business_creation(request)
     return result
-
 
 @app.post("/market-analysis")
 async def create_market_analysis(request: MarketAnalysisRequest):
     result = predict_market_analysis(request)
-    return result
-
-@app.post("/feasability-study")
-async def feasability_study(request: FeasibilityStudyRequest):
-    result = predict_feasability_creation(request)
     return result

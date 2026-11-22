@@ -7,20 +7,28 @@ import { ChevronRight, ShieldCheck } from "lucide-react";
 import { MultiStepForm } from "@/components/multi-step-form";
 import { creationSteps } from "@/components/multi-step-form/steps";
 import { BusinessCreationResult } from "@/components/multi-step-form/results";
-import { getMockCreationResult } from "@/lib/mock-data/creation-mock";
+import { submitBusinessCreation } from "@/lib/api";
+import type { CreationResultData } from "@/lib/types";
 
 export default function CreationServicePage() {
   const router = useRouter();
-  const [submittedValues, setSubmittedValues] = useState<Record<string, any> | null>(null);
+  const [result, setResult] = useState<CreationResultData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (values: Record<string, any>) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSubmittedValues(values);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setError(null);
+    try {
+      const data = await submitBusinessCreation(values);
+      setResult(data);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err: any) {
+      setError(err.message ?? "An unexpected error occurred. Please try again.");
+    }
   };
 
   const handleReset = () => {
-    setSubmittedValues(null);
+    setResult(null);
+    setError(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -39,19 +47,23 @@ export default function CreationServicePage() {
       </nav>
 
       <div className="mt-6">
-        {submittedValues ? (
-          <BusinessCreationResult
-            data={getMockCreationResult(submittedValues)}
-            onReset={handleReset}
-          />
+        {result ? (
+          <BusinessCreationResult data={result} onReset={handleReset} />
         ) : (
-          <MultiStepForm
-            serviceTitle="Business Creation"
-            steps={creationSteps}
-            onSubmit={handleSubmit}
-            onCancel={() => router.push("/services")}
-            submitButtonText="Submit my application"
-          />
+          <>
+            {error && (
+              <div className="mb-6 rounded-xs border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {error}
+              </div>
+            )}
+            <MultiStepForm
+              serviceTitle="Business Creation"
+              steps={creationSteps}
+              onSubmit={handleSubmit}
+              onCancel={() => router.push("/services")}
+              submitButtonText="Submit my application"
+            />
+          </>
         )}
       </div>
 

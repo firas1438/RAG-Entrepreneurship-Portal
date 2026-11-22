@@ -7,20 +7,28 @@ import { ChevronRight, ShieldCheck } from "lucide-react";
 import { MultiStepForm } from "@/components/multi-step-form";
 import { analysisSteps } from "@/components/multi-step-form/steps";
 import { MarketAnalysisResult } from "@/components/multi-step-form/results";
-import { getMockMarketAnalysisResult } from "@/lib/mock-data/analysis-mock";
+import { submitMarketAnalysis } from "@/lib/api";
+import type { MarketAnalysisResultData } from "@/lib/types";
 
 export default function AnalysisServicePage() {
   const router = useRouter();
-  const [submittedValues, setSubmittedValues] = useState<Record<string, any> | null>(null);
+  const [result, setResult] = useState<MarketAnalysisResultData | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (values: Record<string, any>) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setSubmittedValues(values);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setError(null);
+    try {
+      const data = await submitMarketAnalysis(values);
+      setResult(data);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } catch (err: any) {
+      setError(err.message ?? "An unexpected error occurred. Please try again.");
+    }
   };
 
   const handleReset = () => {
-    setSubmittedValues(null);
+    setResult(null);
+    setError(null);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -39,19 +47,23 @@ export default function AnalysisServicePage() {
       </nav>
 
       <div className="mt-6">
-        {submittedValues ? (
-          <MarketAnalysisResult
-            data={getMockMarketAnalysisResult(submittedValues)}
-            onReset={handleReset}
-          />
+        {result ? (
+          <MarketAnalysisResult data={result} onReset={handleReset} />
         ) : (
-          <MultiStepForm
-            serviceTitle="Market Analysis"
-            steps={analysisSteps}
-            onSubmit={handleSubmit}
-            onCancel={() => router.push("/services")}
-            submitButtonText="Launch analysis"
-          />
+          <>
+            {error && (
+              <div className="mb-6 rounded-xs border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+                {error}
+              </div>
+            )}
+            <MultiStepForm
+              serviceTitle="Market Analysis"
+              steps={analysisSteps}
+              onSubmit={handleSubmit}
+              onCancel={() => router.push("/services")}
+              submitButtonText="Launch analysis"
+            />
+          </>
         )}
       </div>
 
