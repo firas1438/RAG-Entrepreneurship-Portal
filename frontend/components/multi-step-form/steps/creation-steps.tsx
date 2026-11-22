@@ -38,7 +38,7 @@ function Step1Project({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -86,7 +86,7 @@ function Step1Project({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -122,7 +122,7 @@ function Step2Situation({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -151,7 +151,7 @@ function Step2Situation({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -179,7 +179,7 @@ function Step2Situation({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -217,7 +217,7 @@ function Step3Preferences({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -246,7 +246,7 @@ function Step3Preferences({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -281,7 +281,7 @@ function Step4Additional({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>

@@ -1,16 +1,16 @@
 "use client";
 
-import { Controller } from "react-hook-form";
+import { Controller, useWatch } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Field, FieldLabel, FieldError } from "@/components/ui/field";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Field, FieldLabel, FieldDescription, FieldError } from "@/components/ui/field";
 import type { FormStep, StepProps } from "../types";
 
 const cardLabelClass =
   "flex cursor-pointer items-start gap-3 rounded-xs border border-zinc-300 bg-white p-4 transition-all hover:border-zinc-400 hover:bg-zinc-50 [&:has([data-state=checked])]:border-primary [&:has([data-state=checked])]:bg-primary/5 [&:has([data-state=checked])]:ring-1 [&:has([data-state=checked])]:ring-primary";
-
 
 function Step1Idea({ control, errors }: StepProps) {
   return (
@@ -58,7 +58,7 @@ function Step1Idea({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -69,7 +69,6 @@ function Step1Idea({ control, errors }: StepProps) {
     </>
   );
 }
-
 
 function Step2TargetMarket({ control, errors }: StepProps) {
   return (
@@ -94,7 +93,7 @@ function Step2TargetMarket({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -124,7 +123,7 @@ function Step2TargetMarket({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -155,7 +154,7 @@ function Step2TargetMarket({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -166,7 +165,6 @@ function Step2TargetMarket({ control, errors }: StepProps) {
     </>
   );
 }
-
 
 function Step3Competition({ control, errors }: StepProps) {
   return (
@@ -190,7 +188,7 @@ function Step3Competition({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -238,7 +236,7 @@ function Step3Competition({ control, errors }: StepProps) {
               ].map((opt) => (
                 <Label key={opt.value} className={cardLabelClass}>
                   <RadioGroupItem value={opt.value} className="mt-0.5" />
-                  <span className="font-semibold text-zinc-950">{opt.label}</span>
+                  <span className="text-zinc-950">{opt.label}</span>
                 </Label>
               ))}
             </RadioGroup>
@@ -250,8 +248,169 @@ function Step3Competition({ control, errors }: StepProps) {
   );
 }
 
+function Step4CommercialModel({ control, errors }: StepProps) {
+  const hasEstimate = useWatch({ control, name: "hasSalesEstimate" });
 
-function Step4Objectives({ control, errors }: StepProps) {
+  return (
+    <>
+      <Field>
+        <FieldLabel required>How do you plan to sell and distribute?</FieldLabel>
+        <Controller
+          name="salesChannel"
+          control={control}
+          rules={{ required: "This field is required to continue." }}
+          render={({ field }) => (
+            <RadioGroup
+              value={field.value}
+              onValueChange={field.onChange}
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              {[
+                { value: "site-web", label: "E-commerce / Online platform" },
+                { value: "magasin", label: "Physical storefront / Commercial premises" },
+                { value: "reseaux-sociaux", label: "Social media commerce" },
+                { value: "vente-directe", label: "Direct B2B / Field sales" },
+                { value: "distributeurs", label: "Distributor & partner network" },
+                { value: "plusieurs", label: "Omnichannel (Online & Physical)" },
+              ].map((opt) => (
+                <Label key={opt.value} className={cardLabelClass}>
+                  <RadioGroupItem value={opt.value} className="mt-0.5" />
+                  <span className="text-zinc-950">{opt.label}</span>
+                </Label>
+              ))}
+            </RadioGroup>
+          )}
+        />
+        <FieldError>{errors.salesChannel?.message as string}</FieldError>
+      </Field>
+
+      <Field>
+        <FieldLabel required>What is your estimated initial startup budget?</FieldLabel>
+        <Controller
+          name="initialBudget"
+          control={control}
+          rules={{ required: "This field is required to continue." }}
+          render={({ field }) => (
+            <RadioGroup
+              value={field.value}
+              onValueChange={field.onChange}
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              {[
+                { value: "moins-5k", label: "Less than 5,000 TND" },
+                { value: "5k-20k", label: "5,000 to 20,000 TND" },
+                { value: "20k-50k", label: "20,000 to 50,000 TND" },
+                { value: "50k-100k", label: "50,000 to 100,000 TND" },
+                { value: "plus-100k", label: "More than 100,000 TND" },
+                { value: "nsp", label: "Not sure yet" },
+              ].map((opt) => (
+                <Label key={opt.value} className={cardLabelClass}>
+                  <RadioGroupItem value={opt.value} className="mt-0.5" />
+                  <span className="text-zinc-950">{opt.label}</span>
+                </Label>
+              ))}
+            </RadioGroup>
+          )}
+        />
+        <FieldError>{errors.initialBudget?.message as string}</FieldError>
+      </Field>
+
+      <Field>
+        <FieldLabel>What resources will you need for initial launch?</FieldLabel>
+        <FieldDescription>Select all resources relevant to your setup.</FieldDescription>
+        <Controller
+          name="startupNeeds"
+          control={control}
+          render={({ field }) => {
+            const current: string[] = Array.isArray(field.value) ? field.value : [];
+            return (
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                {[
+                  { value: "local", label: "Commercial premises / Office" },
+                  { value: "equipements", label: "Equipment / Machinery" },
+                  { value: "matieres-premieres", label: "Inventory / Raw materials" },
+                  { value: "personnel", label: "Staff / Team members" },
+                  { value: "site-web", label: "Digital platform / Website" },
+                  { value: "vehicules", label: "Vehicles / Transport" },
+                ].map((opt) => {
+                  const isChecked = current.includes(opt.value);
+                  return (
+                    <Label key={opt.value} className={cardLabelClass}>
+                      <Checkbox
+                        checked={isChecked}
+                        onCheckedChange={(checked) => {
+                          const next = checked
+                            ? [...current, opt.value]
+                            : current.filter((v: string) => v !== opt.value);
+                          field.onChange(next);
+                        }}
+                        className="mt-0.5"
+                      />
+                      <span className="text-zinc-950">{opt.label}</span>
+                    </Label>
+                  );
+                })}
+              </div>
+            );
+          }}
+        />
+      </Field>
+
+      <Field>
+        <FieldLabel required>Do you have an estimate of your monthly sales?</FieldLabel>
+        <Controller
+          name="hasSalesEstimate"
+          control={control}
+          rules={{ required: "This field is required to continue." }}
+          render={({ field }) => (
+            <RadioGroup
+              value={field.value}
+              onValueChange={field.onChange}
+              className="grid grid-cols-1 gap-3 sm:grid-cols-2"
+            >
+              {[
+                { value: "oui", label: "Yes, I have an estimate" },
+                { value: "non", label: "No, calculate a projection" },
+              ].map((opt) => (
+                <Label key={opt.value} className={cardLabelClass}>
+                  <RadioGroupItem value={opt.value} className="mt-0.5" />
+                  <span className="text-zinc-950">{opt.label}</span>
+                </Label>
+              ))}
+            </RadioGroup>
+          )}
+        />
+        <FieldError>{errors.hasSalesEstimate?.message as string}</FieldError>
+      </Field>
+
+      {hasEstimate === "oui" && (
+        <Field>
+          <FieldLabel>What is your projected monthly sales (in TND)?</FieldLabel>
+          <Controller
+            name="monthlySalesEstimate"
+            control={control}
+            render={({ field }) => (
+              <div className="relative max-w-xs">
+                <Input
+                  type="number"
+                  {...field}
+                  value={field.value ?? ""}
+                  placeholder="e.g., 8000"
+                  className="w-full rounded-xs border-zinc-300 bg-white pr-14"
+                />
+                <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs text-zinc-500">
+                  TND
+                </span>
+              </div>
+            )}
+          />
+        </Field>
+      )}
+    </>
+  );
+}
+
+function Step5Objectives({ control, errors }: StepProps) {
   return (
     <Field>
       <FieldLabel required>What is your primary objective?</FieldLabel>
@@ -266,15 +425,15 @@ function Step4Objectives({ control, errors }: StepProps) {
             className="grid grid-cols-1 gap-3 sm:grid-cols-2"
           >
             {[
-              { value: "comprendre-demande", label: "Understand market demand" },
-              { value: "identifier-concurrents", label: "Identify competitors" },
-              { value: "evaluer-opportunites", label: "Assess market opportunities" },
-              { value: "tendances", label: "Understand industry trends" },
-              { value: "potentiel-global", label: "Study overall commercial potential" },
+              { value: "comprendre-demande", label: "Validate market demand & customer base" },
+              { value: "identifier-concurrents", label: "Identify competitors & pricing gaps" },
+              { value: "evaluer-opportunites", label: "Assess commercial feasibility & margins" },
+              { value: "tendances", label: "Understand industry trends in Tunisia" },
+              { value: "potentiel-global", label: "Complete end-to-end market viability study" },
             ].map((opt) => (
               <Label key={opt.value} className={cardLabelClass}>
                 <RadioGroupItem value={opt.value} className="mt-0.5" />
-                <span className="font-semibold text-zinc-950">{opt.label}</span>
+                <span className="text-zinc-950">{opt.label}</span>
               </Label>
             ))}
           </RadioGroup>
@@ -284,7 +443,6 @@ function Step4Objectives({ control, errors }: StepProps) {
     </Field>
   );
 }
-
 
 export const analysisSteps: FormStep[] = [
   {
@@ -309,11 +467,17 @@ export const analysisSteps: FormStep[] = [
     component: Step3Competition,
   },
   {
+    id: "commercial-model",
+    title: "Commercial & Financial Model",
+    description: "Specify your planned distribution channel, budget, and revenue expectations.",
+    fields: ["salesChannel", "initialBudget", "hasSalesEstimate"],
+    component: Step4CommercialModel,
+  },
+  {
     id: "your-objectives",
     title: "Your Objectives",
     description: "Specify what you expect to achieve from this market analysis.",
     fields: ["mainObjective"],
-    component: Step4Objectives,
+    component: Step5Objectives,
   },
 ];
-
